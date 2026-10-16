@@ -707,6 +707,7 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 .skills__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); }
 .skill {
   --pad: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  --name-size: clamp(1.75rem, 0.9rem + 1.6vw, 2.6rem);
   position: relative; overflow: hidden; min-height: clamp(20rem, 16rem + 10vw, 27rem);
   border-radius: var(--radius); padding: var(--pad); cursor: default; outline-offset: 4px;
   transition: transform var(--dur) var(--ease-out);
@@ -715,24 +716,22 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 .skill--sun { background: var(--sun); color: var(--on-accent); }
 .skill--ink { background: var(--surface-2); color: var(--ink); }
 .skill--paper { background: var(--ink); color: var(--bg); }
-.skill .chips li { padding: 0.25rem 0.6rem; }
-.skill--paper .chips li { background: rgb(128 128 128 / 0.18); color: var(--bg); }
 .skill__name {
   position: absolute; left: var(--pad); right: var(--pad); top: 50%;
   font-family: var(--display); font-weight: 400; text-transform: uppercase;
-  font-size: clamp(1.75rem, 0.9rem + 1.6vw, 2.6rem); line-height: 0.95;
-  transform: translateY(-50%); transform-origin: 0 0;
+  font-size: var(--name-size); line-height: 0.95;
+  transform: translateY(-50%);
   transition: top var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
 }
 .skill__more {
   position: absolute; left: var(--pad); right: var(--pad);
-  top: calc(var(--pad) + 4.25rem); /* just under the shrunken name (two lines at 62%) */
+  top: calc(var(--pad) + var(--name-size) * 1.9 + 1.25rem); /* just under the name (room for two lines) */
   display: grid; gap: 0.85rem; align-content: start;
   opacity: 0; visibility: hidden; transform: translateY(16px);
   transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), visibility 0s linear var(--dur);
 }
 .skill:hover, .skill:focus-visible, .skill.is-open { transform: translateY(-6px); }
-.skill:hover .skill__name, .skill:focus-visible .skill__name, .skill.is-open .skill__name { top: var(--pad); transform: translateY(0) scale(0.62); }
+.skill:hover .skill__name, .skill:focus-visible .skill__name, .skill.is-open .skill__name { top: var(--pad); transform: translateY(0); }
 .skill:hover .skill__more, .skill:focus-visible .skill__more, .skill.is-open .skill__more { opacity: 1; visibility: visible; transform: none; transition-delay: 120ms, 120ms, 0s; }
 @media (hover: none) {
   /* No hover on touch screens: show everything */
