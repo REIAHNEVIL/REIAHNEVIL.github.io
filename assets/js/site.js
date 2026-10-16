@@ -18,11 +18,8 @@
   }
   function syncTheme() {
     var t = currentTheme();
-    if (toggle) {
-      toggle.textContent = t === "dark" ? "Light" : "Dark"; // names the theme it switches to
-      toggle.setAttribute("aria-pressed", String(t === "light"));
-      toggle.setAttribute("aria-label", "Switch to " + (t === "dark" ? "light" : "dark") + " theme");
-    }
+    // The sliding thumb is placed by CSS from data-theme / prefers-color-scheme; this only keeps the state readable
+    if (toggle) toggle.setAttribute("aria-pressed", String(t === "dark"));
     var meta = $('meta[name="theme-color"]');
     if (meta) meta.setAttribute("content", t === "dark" ? "#0a0a0a" : "#eeedea");
   }

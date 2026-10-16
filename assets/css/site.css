@@ -108,12 +108,41 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 .bar__icon { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; transition: background-color var(--dur-fast) var(--ease-out); }
 .bar__icon:hover { background: var(--surface-2); }
 .bar__icon svg { width: 1.1rem; height: 1.1rem; fill: currentColor; }
-.theme-toggle, .bar__menu {
+.bar__menu {
   min-height: 2.75rem; padding: 0 1rem; border-radius: 999px; border: 1px solid var(--line);
   background: var(--surface); font-size: var(--step-small); font-weight: 500; cursor: pointer;
   transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
 }
-.theme-toggle:hover, .bar__menu:hover { background: var(--ink); color: var(--bg); }
+.bar__menu:hover { background: var(--ink); color: var(--bg); }
+
+/* Theme switch: sun and moon in a pill, a peach thumb behind the active one. Dark is the default position. */
+.theme-toggle {
+  --pad: 0.25rem; --knob: 2.5rem;
+  position: relative; display: grid; grid-template-columns: var(--knob) var(--knob); align-items: center;
+  height: 2.75rem; padding: 0 var(--pad); border-radius: 999px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--muted); cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.theme-toggle:hover { border-color: var(--dim); }
+.theme-toggle__thumb {
+  position: absolute; top: var(--pad); bottom: var(--pad); left: var(--pad); width: var(--knob);
+  border-radius: 999px; background: var(--accent); transform: translateX(100%);
+}
+.theme-toggle__icon {
+  position: relative; justify-self: center; width: 1.15rem; height: 1.15rem;
+  fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.theme-toggle__icon--moon { color: var(--on-accent); }
+:root[data-theme="light"] .theme-toggle__thumb { transform: none; }
+:root[data-theme="light"] .theme-toggle__icon--sun { color: var(--on-accent); }
+:root[data-theme="light"] .theme-toggle__icon--moon { color: var(--muted); }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .theme-toggle__thumb { transform: none; }
+  :root:not([data-theme="dark"]) .theme-toggle__icon--sun { color: var(--on-accent); }
+  :root:not([data-theme="dark"]) .theme-toggle__icon--moon { color: var(--muted); }
+}
+.motion .theme-toggle__thumb { transition: transform 450ms var(--ease-spring); }
+.motion .theme-toggle__icon { transition: color var(--dur-fast) var(--ease-out); }
 
 /* =========================================================
    Image slots (photo or a designed fallback)
@@ -366,7 +395,7 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 }
 @media (max-width: 40rem) {
   .intro { --cell: 36px; padding-top: 5.5rem; }
-  .theme-toggle, .bar__menu { padding: 0 0.75rem; }
+  .bar__menu { padding: 0 0.75rem; }
   .bar { gap: 0.4rem; }
   
   
@@ -843,7 +872,8 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 }
 @media (max-width: 40rem) {
   .bar__logo { height: 2.5rem; }
-  .theme-toggle, .bar__menu { padding: 0 0.6rem; min-height: 2.5rem; }
+  .bar__menu { padding: 0 0.6rem; min-height: 2.5rem; }
+  .theme-toggle { --knob: 2.1rem; --pad: 0.2rem; height: 2.5rem; }
   .edu__facts > div { grid-template-columns: 1fr; gap: 0.15rem; }
   .skills__grid { grid-template-columns: 1fr; }
   .post { height: calc(100svh - 2rem); }
