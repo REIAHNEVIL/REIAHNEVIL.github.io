@@ -812,3 +812,31 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
   .post { height: calc(100svh - 2rem); }
   .post[open] { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1.1fr) minmax(0, 1fr); }
 }
+
+/* =========================================================
+   Tech stack: logo tiles grouped like the CV
+   ========================================================= */
+.stack { padding-block: var(--section); display: grid; gap: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); }
+.stack__group {
+  display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 1.5rem; align-items: start;
+  width: min(100%, 72rem); margin-inline: auto; padding-top: 1.5rem; border-top: 1px solid var(--line);
+}
+.stack__label { font-family: var(--pixel); font-weight: 400; font-size: var(--step-small); text-transform: uppercase; color: var(--accent-text); padding-top: 0.95rem; }
+.stack__tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: 0.6rem; }
+.tool {
+  display: flex; align-items: center; gap: 0.75rem; min-height: 3.5rem; padding: 0.7rem 1rem;
+  border-radius: 12px; background: var(--surface); border: 1px solid var(--line); font-weight: 500;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out), transform var(--dur) var(--ease-spring);
+}
+.tool svg { width: 1.6rem; height: 1.6rem; flex: none; fill: currentColor; color: var(--muted); transition: color var(--dur-fast) var(--ease-out); }
+.tool:hover { background: var(--brand); color: var(--brand-ink); border-color: transparent; transform: translateY(-3px); }
+.tool:hover svg { color: var(--brand-ink); }
+.stack__credit { text-align: center; font-size: var(--step-small); color: var(--muted); }
+.stack__credit a { color: inherit; }
+
+@media (max-width: 48rem) {
+  .stack__group { grid-template-columns: 1fr; gap: 0.75rem; }
+  .stack__label { padding-top: 0; }
+  .stack__tools { grid-template-columns: repeat(auto-fill, minmax(8.75rem, 1fr)); }
+}
