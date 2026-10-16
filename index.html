@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jure Rhoanne Batohanon</title>
+  <meta name="description" content="Jure Rhoanne Batohanon, a computer science student in Cebu growing into a full-stack developer. Projects, experience, events and awards.">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta property="og:title" content="Jure Rhoanne Batohanon">
+  <meta property="og:description" content="CS student growing into a full-stack developer, working across design, front end and back end.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/portrait.jpg">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/silkscreen-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/cabinet-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+      document.documentElement.classList.add("js");
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Shared drawings -->
+  <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
+    <symbol id="spark" viewBox="0 0 24 24"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0z"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+    <symbol id="chev" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></symbol>
+    <symbol id="close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.6h.06c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.77 2.5 4.77 5.76v5.59h-4v-4.96c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.28-1.96 2.61v5.05h-4z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5h18v14H3zm2 2v.4l7 4.9 7-4.9V7zm14 2.84-7 4.9-7-4.9V17h14z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6zM13 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  </svg>
+
+  <!-- Navigation -->
+  <header class="bar">
+    <a class="bar__name" href="#top" aria-label="Jure Rhoanne Batohanon, back to top">
+      <img class="bar__logo bar__logo--white" src="jr-logo-v3-white.svg" alt="" width="856" height="768">
+      <img class="bar__logo bar__logo--black" src="jr-logo-v3-black.svg" alt="" width="856" height="768">
+    </a>
+    <nav class="bar__nav" aria-label="Main">
+      <button class="bar__menu" type="button" aria-expanded="false" aria-controls="nav-list" data-menu>Menu</button>
+      <ul id="nav-list" class="bar__links">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="bar__end">
+      <a class="bar__icon" href="https://www.linkedin.com/in/jure-rhoanne-batohanon-98a4a7307/" aria-label="LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+      <a class="bar__icon" href="https://github.com/REIAHNEVIL" aria-label="GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a>
+      <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle>Light</button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ INTRO ============ -->
+    <section class="intro" id="top" aria-labelledby="intro-name">
+      <div class="intro__pixels" aria-hidden="true">
+        <i style="--x:0;--y:1"></i><i style="--x:9;--y:1"></i><i style="--x:15;--y:0"></i><i style="--x:19;--y:1"></i><i style="--x:27;--y:2"></i><i style="--x:29;--y:6"></i><i style="--x:29;--y:11;--s:2"></i><i style="--x:24;--y:17"></i><i style="--x:17;--y:18"></i><i style="--x:2;--y:18"></i><i style="--x:11;--y:18;--s:2"></i><i style="--x:0;--y:13"></i>
+      </div>
+
+      <div class="intro__left">
+        <p class="intro__hello"><span data-hello aria-hidden="true">HELLO,</span><span class="visually-hidden">Hello, I’m</span></p>
+
+        <h1 id="intro-name" class="intro__name">
+          <span class="intro__line"><span class="px-box">J</span>URE RHOANNE</span>
+          <span class="intro__line">BATO<span class="px-inv">HANON</span></span>
+        </h1>
+
+        <p class="intro__role">AI <span class="amp">&amp;</span> WEB DEVELOPER</p>
+
+        <p class="intro__text">I’m a CS student growing into a full-stack developer, working across design, front end, and back end. Right now I’m sharpening my skills through school and personal projects, and I’m always open to new challenges that push me to learn more.</p>
+
+        <div class="intro__actions">
+          <a class="btn btn--solid" href="#projects">View projects <svg aria-hidden="true"><use href="#arrow"/></svg></a>
+          <a class="btn" href="cv/BATOHANON_CV.pdf" download>Download CV <svg aria-hidden="true" style="transform:rotate(135deg)"><use href="#arrow"/></svg></a>
+        </div>
+      </div>
+
+      <aside class="intro__card brackets" aria-label="Photo and links">
+        <figure class="intro__photo slot" data-slot>
+          <span class="slot__fallback slot__fallback--pixel" aria-hidden="true">JR</span>
+          <img src="assets/img/portrait.jpg" alt="Portrait of Jure Rhoanne Batohanon" width="900" height="1100" fetchpriority="high" onerror="this.parentNode.classList.add('is-empty')">
+        </figure>
+        <p class="intro__connect-label">LET’S CONNECT:</p>
+        <ul class="intro__connect">
+          <li><a class="btn btn--sm" href="mailto:batohanonjurerhoanne@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>Email</a></li>
+          <li><a class="btn btn--sm" href="https://www.linkedin.com/in/jure-rhoanne-batohanon-98a4a7307/"><svg aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a></li>
+          <li><a class="btn btn--sm" href="https://github.com/REIAHNEVIL"><svg aria-hidden="true"><use href="#i-github"/></svg>GitHub</a></li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- ============ MARQUEE: who I am, in short ============ -->
+    <section class="marquee" aria-label="In short">
+      <div class="marquee__track">
+        <ul class="marquee__list">
+          <li>DOST-SEI Scholar</li><li><svg aria-hidden="true"><use href="#spark"/></svg></li>
+          <li>Consistent Dean’s Lister</li><li><svg aria-hidden="true"><use href="#spark"/></svg></li>
+          <li>Problem Solver</li><li><svg aria-hidden="true"><use href="#spark"/></svg></li>
+          <li>Award-Winning Competitor</li><li><svg aria-hidden="true"><use href="#spark"/></svg></li>
+          <li>Freelance Web Developer</li><li><svg aria-hidden="true"><use href="#spark"/></svg></li>
+          <li>International Delegate</li><li><svg aria-hidden="true"><use href="#spark"/></svg></li>
+        </ul>
+        <ul class="marquee__list" aria-hidden="true"></ul>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ME ============ -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <h2 id="about-title" class="title title--center" data-rise>ABOUT ME</h2>
+
+      <div class="about__layout">
+        <figure class="about__photo slot" data-slot data-rise>
+          <span class="slot__fallback slot__fallback--pixel" aria-hidden="true">JR</span>
+          <img src="assets/img/about.jpg" width="900" height="1125" loading="lazy" alt="Jure Rhoanne Batohanon"
+               onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='assets/img/portrait.jpg';}else{this.parentNode.classList.add('is-empty');}">
+        </figure>
+
+        <div class="about__list">
+          <details class="drop" name="about" open data-rise>
+            <summary><span class="drop__title">Education</span><span class="drop__count">2</span></summary>
+            <div class="drop__body">
+              <article class="edu">
+                <p class="edu__when">2023 – June 2027 (expected)</p>
+                <h3 class="edu__title">BS Computer Science</h3>
+                <p class="edu__sub">Major in Artificial Intelligence and Web Development · University of San Jose-Recoletos, Cebu City</p>
+                <dl class="edu__facts">
+                  <div><dt>Thesis</dt><dd><strong>MAVIA</strong>: Audio-tactile Adaptive Learning System for Blind and Visually Impaired (BVI) via Reinforcement Learning <em>(in progress)</em></dd></div>
+                  <div><dt>Scholarship</dt><dd><strong>DOST-SEI RA 7687 Scholar</strong></dd></div>
+                  <div><dt>Honors</dt><dd><strong>Consistent Dean’s Lister</strong>, 1st Semester A.Y. 2023–2024 to present</dd></div>
+                </dl>
+              </article>
+              <article class="edu">
+                <p class="edu__when">July 2023</p>
+                <h3 class="edu__title">Senior High School</h3>
+                <p class="edu__sub">Calatrava Senior High School – Stand Alone · Brgy. Bantayanon, Calatrava, Negros Occidental</p>
+                <dl class="edu__facts">
+                  <div><dt>Honors</dt><dd><strong>With Highest Honors</strong></dd></div>
+                </dl>
+              </article>
+            </div>
+          </details>
+
+          <details class="drop" name="about" data-rise>
+            <summary><span class="drop__title">Leadership</span><span class="drop__count">2</span></summary>
+            <div class="drop__body">
+              <article class="edu">
+                <p class="edu__when">A.Y. 2025–2026</p>
+                <h3 class="edu__title">3rd Year Governor</h3>
+                <p class="edu__sub">Information and Computer Technology Organization, USJ-R</p>
+              </article>
+              <article class="edu">
+                <p class="edu__when">2024–2026</p>
+                <h3 class="edu__title">Computer Science Representative</h3>
+                <p class="edu__sub">DOST Scholars’ Association, USJ-R</p>
+              </article>
+            </div>
+          </details>
+
+          <details class="drop" name="about" data-rise>
+            <summary><span class="drop__title">Relevant Coursework</span><span class="drop__count">10</span></summary>
+            <div class="drop__body">
+              <ul class="chips">
+                <li>Data Structures &amp; Algorithms</li><li>Software Engineering 1 &amp; 2</li><li>Information Management (Databases)</li>
+                <li>Operating Systems</li><li>Computer Organization &amp; Architecture</li><li>Data Communications &amp; Networking</li>
+                <li>Automata Theory &amp; Formal Languages</li><li>Machine Learning</li><li>Intelligent Systems</li><li>Fundamentals of Cybersecurity</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="skills" id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title" class="title title--center" data-rise>WHAT I WORK WITH</h2>
+      <p class="skills__sub" data-rise>Four areas I build in, and the tools I reach for in each.</p>
+      <div class="skills__grid">
+        <article class="skill skill--peach" tabindex="0" data-skill data-rise>
+          <h3 class="skill__name">AI <span class="amp">&amp;</span> MACHINE LEARNING</h3>
+          <div class="skill__more">
+            <p>I like building models that actually help someone. SALITAyo is where I learned fine-tuning, and my thesis is teaching me reinforcement learning.</p>
+            <ul class="chips chips--dark"><li>Python</li><li>scikit-learn</li><li>T5 &amp; DeBERTa-v2</li><li>SVM &amp; RandomForest</li><li>LLM APIs</li><li>Reinforcement learning</li></ul>
+          </div>
+        </article>
+        <article class="skill skill--sun" tabindex="0" data-skill data-rise>
+          <h3 class="skill__name">WEB DEVELOPMENT</h3>
+          <div class="skill__more">
+            <p>Most of my real-world work lives here. I’ve built two systems for clients, from the database up to the admin pages they use every day.</p>
+            <ul class="chips chips--dark"><li>React</li><li>Angular</li><li>Django &amp; DRF</li><li>PHP</li><li>MySQL</li><li>JavaScript</li></ul>
+          </div>
+        </article>
+        <article class="skill skill--ink" tabindex="0" data-skill data-rise>
+          <h3 class="skill__name">COMPUTER VISION</h3>
+          <div class="skill__more">
+            <p>I got into this through AAIMS and our iPBL robot. Getting a camera to understand what’s in front of it is still one of my favorite things to work on.</p>
+            <ul class="chips"><li>OpenCV</li><li>MediaPipe</li><li>solvePnP</li><li>Raspberry Pi</li><li>Arduino</li></ul>
+          </div>
+        </article>
+        <article class="skill skill--paper" tabindex="0" data-skill data-rise>
+          <h3 class="skill__name">UI <span class="amp">&amp;</span> SYSTEM DESIGN</h3>
+          <div class="skill__more">
+            <p>I sketch screens in Figma and map things out with diagrams before I write code. It saves me a lot of rewriting later.</p>
+            <ul class="chips chips--dark"><li>Figma</li><li>Canva</li><li>Use case &amp; class diagrams</li><li>C &amp; Java</li><li>Git &amp; GitHub</li></ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="xp" id="experience" aria-labelledby="xp-title">
+      <h2 id="xp-title" class="title title--center" data-rise>EXPERIENCE</h2>
+      <ol class="xp__list" data-xp>
+        <li class="xp__item" data-rise>
+          <article class="xp__card">
+            <h3 class="xp__title">Freelance Web Developer</h3>
+            <p class="xp__org">Applied Microbiology Laboratory · University of San Carlos</p>
+            <p class="xp__meta"><span class="xp__when">Jan–Feb 2026</span><span class="xp__kind">Freelance</span></p>
+            <ul class="xp__points">
+              <li>Built an equipment booking system with PHP and MySQL that is still in use, with 66 users and 780 bookings across 20 lab instruments.</li>
+              <li>Prevented double bookings and maintenance conflicts, and gave lab staff a dashboard to approve or reject requests, with email updates sent to users.</li>
+              <li>Secured accounts with hashed passwords, admin-only access control and parameterized SQL queries.</li>
+            </ul>
+            <ul class="xp__tags"><li>PHP</li><li>MySQL</li></ul>
+          </article>
+        </li>
+        <li class="xp__item" data-rise>
+          <article class="xp__card">
+            <h3 class="xp__title">Freelance Web Developer</h3>
+            <p class="xp__org">3rd Core-to-Core International Biosymposium 2026 · University of San Carlos</p>
+            <p class="xp__meta"><span class="xp__when">Jun–Oct 2026</span><span class="xp__kind">Freelance</span></p>
+            <ul class="xp__points">
+              <li>Designed and built the conference’s official website with React and Django, handling registration, payment verification and abstract submissions for 31 delegates from 3 countries.</li>
+              <li>Built an admin console the organizing committee used to review abstracts, confirm payments, export registrant lists and update the program, speakers and announcements.</li>
+              <li>Automated confirmation and decision emails for registrations, payments and abstracts.</li>
+            </ul>
+            <ul class="xp__tags"><li>React</li><li>Django</li><li>Django REST Framework</li></ul>
+          </article>
+        </li>
+        <li class="xp__item" data-rise>
+          <article class="xp__card">
+            <h3 class="xp__title">USJ-R Delegate, iPBL 2026</h3>
+            <p class="xp__org">Autonomous Quadruped Challenge · International Project-Based Learning with Southern Taiwan University of Science and Technology and Osaka Institute of Technology</p>
+            <p class="xp__meta"><span class="xp__when">Aug 2026</span><span class="xp__kind">International program</span></p>
+            <ul class="xp__points">
+              <li>Selected as a USJ-R delegate to a five-day international program, working in a six-member team with two students from each school.</li>
+              <li>Co-developed the robot’s vision and navigation: a Python and OpenCV program on a Raspberry Pi that follows green and red markers through the camera and avoids obstacles with an ultrasonic sensor.</li>
+              <li>Sent commands over serial to an Arduino Nano gait controller adapted to drive 12 servos.</li>
+            </ul>
+            <ul class="xp__tags"><li>Python</li><li>OpenCV</li><li>Raspberry Pi</li><li>Arduino Nano</li><li>Serial</li></ul>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+      <div class="fan" data-fan aria-hidden="true">
+        <span class="fan__card slot" data-slot style="--n:-2"><img src="assets/img/projects/salitayo.jpg" alt="" onerror="this.parentNode.classList.add('is-empty')"><span class="slot__fallback slot__fallback--word">SALITAYO</span></span>
+        <span class="fan__card slot" data-slot style="--n:-1"><img src="assets/img/projects/core-to-core.jpg" alt="" onerror="this.parentNode.classList.add('is-empty')"><span class="slot__fallback slot__fallback--word">CORE-TO-CORE</span></span>
+        <span class="fan__card slot" data-slot style="--n:0"><img src="assets/img/projects/mavia.jpg" alt="" onerror="this.parentNode.classList.add('is-empty')"><span class="slot__fallback slot__fallback--word">MAVIA</span></span>
+        <span class="fan__card slot" data-slot style="--n:1"><img src="assets/img/projects/lab-booking.jpg" alt="" onerror="this.parentNode.classList.add('is-empty')"><span class="slot__fallback slot__fallback--word">LAB BOOKING</span></span>
+        <span class="fan__card slot" data-slot style="--n:2"><img src="assets/img/projects/aaims.jpg" alt="" onerror="this.parentNode.classList.add('is-empty')"><span class="slot__fallback slot__fallback--word">AAIMS</span></span>
+      </div>
+      <h2 id="projects-title" class="title title--center" data-rise>PROJECTS<br>IN ACTION</h2>
+
+      <div class="works" data-works id="project-grid">
+
+        <article class="work">
+          <figure class="work__media work__media--paper slot" data-slot>
+            <span class="slot__fallback slot__fallback--stat" aria-hidden="true"><b>RL</b></span>
+            <img src="assets/img/projects/mavia.jpg" width="1920" height="1080" alt="MAVIA concept diagram: a teacher's PDF becomes concepts, questions and a learning path, is reviewed and voiced, then delivered adaptively to a learner with headphones and a keypad." onerror="this.parentNode.classList.add('is-empty')">
+          </figure>
+          <h3 class="work__title">MAVIA <span class="work__type">(Thesis, in progress)</span> – 2027</h3>
+          <p class="work__line">Audio-tactile adaptive learning for blind and visually impaired learners.</p>
+          <div class="work__actions"><button class="btn btn--sm" type="button" data-open>View details <svg aria-hidden="true"><use href="#arrow"/></svg></button></div>
+          <template class="work__detail">
+            <p>MAVIA is an audio-tactile adaptive learning system for blind and visually impaired learners. A teacher’s lesson becomes an audio course the learner navigates with a keypad, and reinforcement learning chooses what comes next.</p>
+            <ul class="win__points">
+              <li>A teacher’s PDF is turned into concepts, versioned content, generated questions and a learning path.</li>
+              <li>The teacher reviews it before audio conversion and publishing.</li>
+              <li>A missed concept sends the learner back through a simpler version.</li>
+            </ul>
+            <ul class="win__tags"><li>Reinforcement learning</li><li>Audio delivery</li><li>Keypad input</li></ul>
+          </template>
+        </article>
+
+        <article class="work">
+          <figure class="work__media slot" data-slot>
+            <span class="slot__fallback slot__fallback--stat" aria-hidden="true"><b>31</b></span>
+            <img src="assets/img/projects/core-to-core.jpg" width="1440" height="900" alt="Core-to-Core Biosymposium 2026 home page with the invitation headline, the October 12 to 13 date, the SAFAD Theatre venue and Register buttons." onerror="this.parentNode.classList.add('is-empty')">
+          </figure>
+          <h3 class="work__title">Core-to-Core Biosymposium <span class="work__type">(Freelance Project)</span> – 2026</h3>
+          <p class="work__line">The official site and admin console for an international conference.</p>
+          <div class="work__actions"><button class="btn btn--sm" type="button" data-open>View details <svg aria-hidden="true"><use href="#arrow"/></svg></button></div>
+          <template class="work__detail">
+            <p>The official website and admin console for the 3rd Core-to-Core International Biosymposium at the University of San Carlos, handling registration, payment verification and abstract submissions for 31 delegates from 3 countries.</p>
+            <ul class="win__points">
+              <li>An admin console the organizing committee used to review abstracts, confirm payments, export registrant lists and update the program, speakers and announcements.</li>
+              <li>Automated confirmation and decision emails for registrations, payments and abstracts.</li>
+            </ul>
+            <ul class="win__tags"><li>React</li><li>Django</li><li>Django REST Framework</li></ul>
+          </template>
+        </article>
+
+        <article class="work">
+          <figure class="work__media slot" data-slot>
+            <span class="slot__fallback slot__fallback--stat" aria-hidden="true"><b>780</b></span>
+            <img src="assets/img/projects/lab-booking.jpg" width="1440" height="900" alt="Lab equipment booking system dashboard" onerror="this.parentNode.classList.add('is-empty')">
+          </figure>
+          <h3 class="work__title">Lab Booking System <span class="work__type">(Freelance Project)</span> – 2026</h3>
+          <p class="work__line">Equipment booking for a university lab, still in daily use.</p>
+          <div class="work__actions"><button class="btn btn--sm" type="button" data-open>View details <svg aria-hidden="true"><use href="#arrow"/></svg></button></div>
+          <template class="work__detail">
+            <p>An equipment booking system for the Applied Microbiology Laboratory at the University of San Carlos. It is still in use, with 66 users and 780 bookings across 20 lab instruments.</p>
+            <ul class="win__points">
+              <li>Prevents double bookings and maintenance conflicts.</li>
+              <li>A dashboard for lab staff to approve or reject requests, with email updates sent to users.</li>
+              <li>Hashed passwords, admin-only access control and parameterized SQL queries.</li>
+            </ul>
+            <ul class="win__tags"><li>PHP</li><li>MySQL</li></ul>
+          </template>
+        </article>
+
+        <article class="work">
+          <figure class="work__media slot" data-slot>
+            <span class="slot__fallback slot__fallback--stat" aria-hidden="true"><b>1,000</b></span>
+            <img src="assets/img/projects/aaims.jpg" width="1440" height="900" alt="AAIMS proctor dashboard" onerror="this.parentNode.classList.add('is-empty')">
+          </figure>
+          <h3 class="work__title">AAIMS <span class="work__type">(Computer Vision Project)</span> – 2026</h3>
+          <p class="work__line">Real-time exam proctoring from a webcam, with no video recorded.</p>
+          <div class="work__actions"><button class="btn btn--sm" type="button" data-open>View details <svg aria-hidden="true"><use href="#arrow"/></svg></button></div>
+          <template class="work__detail">
+            <p>A real-time exam proctoring app in Python that flags head turns, face absence and talking from a standard webcam, processing everything locally without recording video.</p>
+            <ul class="win__points">
+              <li>Head pose estimation with OpenCV solvePnP on MediaPipe FaceMesh landmarks.</li>
+              <li>Face detection that cross-checks a Haar Cascade against FaceMesh, and an SVM mouth-movement classifier trained on 1,000 self-collected samples.</li>
+              <li>Per-student calibration to reduce false alarms, plus a Tkinter proctor dashboard with live alerts and exportable CSV logs.</li>
+            </ul>
+            <ul class="win__tags"><li>Python</li><li>OpenCV</li><li>MediaPipe</li><li>scikit-learn</li><li>Tkinter</li></ul>
+          </template>
+        </article>
+
+        <article class="work" data-extra>
+          <figure class="work__media slot" data-slot>
+            <span class="slot__fallback slot__fallback--stat" aria-hidden="true"><b>85.8%</b></span>
+            <img src="assets/img/projects/salitayo.jpg" width="1440" height="900" alt="SALITAyo writing assistant" onerror="this.parentNode.classList.add('is-empty')">
+          </figure>
+          <h3 class="work__title">SALITAyo <span class="work__type">(NLP Project)</span> – 2026</h3>
+          <p class="work__line">A bilingual reading and writing assistant for dyslexic learners.</p>
+          <div class="work__actions"><button class="btn btn--sm" type="button" data-open>View details <svg aria-hidden="true"><use href="#arrow"/></svg></button></div>
+          <template class="work__detail">
+            <p>A bilingual English and Filipino reading and writing assistant for dyslexic learners, built in a team of three. I led the Writing Assistant component.</p>
+            <ul class="win__points">
+              <li>Fine-tuned a T5-small model on 22,000+ misspellings to rank spelling corrections: 85.8% top-1 accuracy.</li>
+              <li>Trained a RandomForest classifier that sorts errors into five dyslexia-related types: 0.98 weighted F1.</li>
+              <li>Built the writing pipeline in Django REST Framework and React, combining SymSpell candidates, DeBERTa-v2 checks against reference passages, and LLaMA 3.3 via Groq for Filipino and Taglish text.</li>
+            </ul>
+            <ul class="win__tags"><li>Python</li><li>T5-small</li><li>RandomForest</li><li>DeBERTa-v2</li><li>LLaMA 3.3</li><li>Django REST Framework</li><li>React</li></ul>
+          </template>
+        </article>
+
+        <article class="work" data-extra>
+          <figure class="work__media slot" data-slot>
+            <span class="slot__fallback slot__fallback--stat" aria-hidden="true"><b>SOS</b></span>
+            <img src="assets/img/projects/josenicare.jpg" width="1440" height="900" alt="JoseniCare screens" onerror="this.parentNode.classList.add('is-empty')">
+          </figure>
+          <h3 class="work__title">JoseniCare <span class="work__type">(Academic Project)</span> – 2025</h3>
+          <p class="work__line">Campus health and emergency response for students, clinic and security.</p>
+          <div class="work__actions"><button class="btn btn--sm" type="button" data-open>View details <svg aria-hidden="true"><use href="#arrow"/></svg></button></div>
+          <template class="work__detail">
+            <p>A campus health and emergency response system linking students, the university clinic and campus security through a Flutter mobile app and a PHP web portal. Built in a team of three for Software Engineering 1.</p>
+            <ul class="win__points">
+              <li>Designed the Figma screens for clinic staff, doctors, security staff, login and SOS alerts.</li>
+              <li>Built the staff and doctor modules for patient records, medical inventory and health surveys.</li>
+              <li>Created the use case diagram, class diagram and procedural designs for clinic workflows.</li>
+            </ul>
+            <ul class="win__tags"><li>Figma</li><li>PHP</li><li>MySQL</li><li>Flutter</li></ul>
+          </template>
+        </article>
+      </div>
+
+      <button class="btn works__more" type="button" data-more aria-expanded="false" aria-controls="project-grid">Show more</button>
+    </section>
+
+    <!-- ============ EVENTS & AWARDS ============ -->
+    <section class="events" id="events" aria-labelledby="events-title">
+      <div class="events__head">
+        <h2 id="events-title" class="title" data-rise>EVENTS &amp;<br>AWARDS</h2>
+        <div class="events__nav">
+          <button class="round" type="button" data-prev aria-label="Previous event"><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#chev"/></svg></button>
+          <button class="round" type="button" data-next aria-label="Next event"><svg aria-hidden="true"><use href="#chev"/></svg></button>
+        </div>
+      </div>
+
+      <ul class="carousel" data-carousel aria-label="Events and awards">
+        <li class="event">
+          <button class="event__open" type="button" data-event aria-label="Open iPBL 2026 photos and details">
+            <span class="event__photos" data-photos="assets/img/events/ipbl" data-alt="At iPBL 2026"><span class="event__fallback"><b>IPBL</b>3 schools · 6 students</span></span>
+          </button>
+          <p class="event__rank">IPBL 2026</p>
+          <p class="event__name">Autonomous Quadruped Challenge, an international project-based learning program</p>
+          <p class="event__when">August 2026 · USJ-R delegate</p>
+          <template class="event__detail">
+            <p>Selected as a USJ-R delegate to a five-day international program with Southern Taiwan University of Science and Technology and Osaka Institute of Technology, working in a six-member team with two students from each school.</p>
+            <p>I co-developed the robot’s vision and navigation: a Python and OpenCV program on a Raspberry Pi that follows green and red markers and avoids obstacles with an ultrasonic sensor, sending commands over serial to an Arduino Nano gait controller driving 12 servos.</p>
+            <ul class="win__tags"><li>Robotics</li><li>Computer vision</li><li>International</li></ul>
+          </template>
+        </li>
+        <li class="event">
+          <button class="event__open" type="button" data-event aria-label="Open PSITE Innovation Challenge photos and details">
+            <span class="event__photos" data-photos="assets/img/events/psite" data-alt="At the PSITE Central Visayas Innovation Challenge"><span class="event__fallback"><b>1ST</b>runner-up</span></span>
+          </button>
+          <p class="event__rank">1ST RUNNER-UP</p>
+          <p class="event__name">PSITE Central Visayas Innovation Challenge: AI Innovation for Financial Inclusion</p>
+          <p class="event__when">2026</p>
+          <template class="event__detail">
+            <p>1st Runner-Up at the PSITE Central Visayas Innovation Challenge, themed AI Innovation for Financial Inclusion.</p>
+            <ul class="win__tags"><li>AI</li><li>Innovation challenge</li><li>Regional</li></ul>
+          </template>
+        </li>
+        <li class="event">
+          <button class="event__open" type="button" data-event aria-label="Open Bangkok University and Berkeley SkyDeck Hackathon photos and details">
+            <span class="event__photos" data-photos="assets/img/events/skydeck" data-alt="At the Bangkok University × Berkeley SkyDeck Fund Hackathon"><span class="event__fallback"><b>TOP 15</b>Philippine representative</span></span>
+          </button>
+          <p class="event__rank">TOP 15</p>
+          <p class="event__name">Finalist and Philippine Representative, 4th Bangkok University × Berkeley SkyDeck Fund Hackathon</p>
+          <p class="event__when">2026</p>
+          <template class="event__detail">
+            <p>Top 15 Finalist and Philippine Representative at the 4th Bangkok University × Berkeley SkyDeck Fund Hackathon.</p>
+            <ul class="win__tags"><li>Hackathon</li><li>International</li><li>Startup</li></ul>
+          </template>
+        </li>
+        <li class="event">
+          <button class="event__open" type="button" data-event aria-label="Open CESAFI Computer Quiz Bowl photos and details">
+            <span class="event__photos" data-photos="assets/img/events/cesafi" data-alt="At the CESAFI Computer Quiz Bowl"><span class="event__fallback"><b>TOP 5</b>quiz bowl</span></span>
+          </button>
+          <p class="event__rank">TOP 5</p>
+          <p class="event__name">Finalist, CESAFI Computer Quiz Bowl</p>
+          <p class="event__when">2026</p>
+          <template class="event__detail">
+            <p>Top 5 Finalist at the CESAFI Computer Quiz Bowl.</p>
+            <ul class="win__tags"><li>Quiz bowl</li><li>Computing</li></ul>
+          </template>
+        </li>
+        <li class="event">
+          <button class="event__open" type="button" data-event aria-label="Open EO Lead 2 Lead Congress photos and details">
+            <span class="event__photos" data-photos="assets/img/events/lead2lead" data-alt="At the EO Philippines South Lead 2 Lead Congress"><span class="event__fallback"><b>TOP 8</b>Lead 2 Lead</span></span>
+          </button>
+          <p class="event__rank">TOP 8</p>
+          <p class="event__name">Finalist, EO Philippines South Lead 2 Lead Student Leaders Entrepreneurship Congress</p>
+          <p class="event__when">2026</p>
+          <template class="event__detail">
+            <p>Top 8 Finalist at the EO Philippines South Lead 2 Lead Student Leaders Entrepreneurship Congress.</p>
+            <ul class="win__tags"><li>Leadership</li><li>Entrepreneurship</li></ul>
+          </template>
+        </li>
+        <li class="event">
+          <button class="event__open" type="button" data-event aria-label="Open TOPCIT certification photos and details">
+            <span class="event__photos" data-photos="assets/img/events/topcit" data-alt="TOPCIT certification"><span class="event__fallback"><b>367</b>TOPCIT score</span></span>
+          </button>
+          <p class="event__rank">TOPCIT LEVEL 2</p>
+          <p class="event__name">Test of Practical Competency in ICT, score 367</p>
+          <p class="event__when">July 2026</p>
+          <template class="event__detail">
+            <p>Reached Level 2 with a score of 367 on TOPCIT, the Test of Practical Competency in ICT.</p>
+            <ul class="win__tags"><li>Certification</li><li>ICT</li></ul>
+          </template>
+        </li>
+      </ul>
+      <div class="carousel__dots" data-dots aria-hidden="true"></div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="title title--center" data-rise>READY TO<br>WORK TOGETHER?</h2>
+      <a class="pill pill--center pill--big" href="mailto:batohanonjurerhoanne@gmail.com?subject=Hello%20Jure" data-rise>Send message <svg aria-hidden="true"><use href="#arrow"/></svg></a>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <nav aria-label="Footer">
+      <ul class="footer__links">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <ul class="footer__icons">
+      <li><a href="https://www.linkedin.com/in/jure-rhoanne-batohanon-98a4a7307/" aria-label="LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+      <li><a href="https://github.com/REIAHNEVIL" aria-label="GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a></li>
+      <li><a href="mailto:batohanonjurerhoanne@gmail.com" aria-label="Email"><svg aria-hidden="true"><use href="#i-mail"/></svg></a></li>
+    </ul>
+    <p class="footer__copy">© 2026 Jure Rhoanne Batohanon · Cebu City, Philippines</p>
+    <p class="footer__name" aria-hidden="true">JURE BATOHANON</p>
+  </footer>
+
+  <!-- ============ POPUPS ============ -->
+  <!-- Project details -->
+  <dialog class="win" data-dialog aria-labelledby="win-title">
+    <div class="win__bar">
+      <p class="win__title" id="win-title"></p>
+      <button class="win__close" type="button" data-close aria-label="Close"><svg aria-hidden="true"><use href="#close"/></svg></button>
+    </div>
+    <div class="win__body">
+      <div class="win__media" data-win-media></div>
+      <div class="win__content">
+        <h4>About the project</h4>
+        <div data-win-about></div>
+        <h4>Core technologies</h4>
+        <div data-win-tags></div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Event post: photos on the left, details on the right -->
+  <dialog class="post" data-post aria-labelledby="post-title">
+    <button class="post__close" type="button" data-close aria-label="Close"><svg aria-hidden="true"><use href="#close"/></svg></button>
+    <div class="post__media" data-post-media>
+      <div class="post__stage" data-post-stage></div>
+      <button class="post__nav post__nav--prev" type="button" data-post-prev aria-label="Previous photo"><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#chev"/></svg></button>
+      <button class="post__nav post__nav--next" type="button" data-post-next aria-label="Next photo"><svg aria-hidden="true"><use href="#chev"/></svg></button>
+      <div class="post__pips" data-post-pips aria-hidden="true"></div>
+    </div>
+    <div class="post__side">
+      <div class="post__head">
+        <span class="post__avatar slot" data-slot><span class="slot__fallback slot__fallback--pixel" aria-hidden="true">JR</span><img src="assets/img/portrait.jpg" alt="" onerror="this.parentNode.classList.add('is-empty')"></span>
+        <div>
+          <p class="post__author">Jure Rhoanne Batohanon</p>
+          <p class="post__when" data-post-when></p>
+        </div>
+      </div>
+      <div class="post__body">
+        <h3 class="post__rank" id="post-title" data-post-rank></h3>
+        <p class="post__event" data-post-event></p>
+        <div class="post__text" data-post-text></div>
+      </div>
+      <p class="post__count" data-post-count aria-live="polite"></p>
+    </div>
+  </dialog>
+</body>
+</html>
