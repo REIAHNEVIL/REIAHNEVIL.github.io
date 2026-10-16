@@ -203,6 +203,59 @@
     var winMedia = $("[data-win-media]", win);
     var winAbout = $("[data-win-about]", win);
     var winTags = $("[data-win-tags]", win);
+    var winShots = $("[data-win-shots]", win);
+
+    // Screenshot strip under the media: the card's own media first, then each <img> in template.work__shots.
+    var fillShots = function (card) {
+      winShots.textContent = "";
+      winShots.hidden = true;
+      var tpl = $("template.work__shots", card);
+      if (!tpl) return;
+      var lead = winMedia.firstElementChild;
+      var leadIsVideo = !!lead && lead.tagName === "VIDEO";
+      var buttons = [];
+      var addThumb = function (thumb, label, show) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "win__shot";
+        b.setAttribute("aria-label", label);
+        var t = document.createElement("img");
+        t.src = thumb; t.alt = ""; t.loading = "lazy"; t.decoding = "async";
+        b.appendChild(t);
+        b.addEventListener("click", function () {
+          buttons.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+          show();
+        });
+        winShots.appendChild(b);
+        buttons.push(b);
+        return b;
+      };
+      if (lead && !lead.classList.contains("slot__fallback")) {
+        var leadThumb = leadIsVideo ? lead.getAttribute("poster") : lead.getAttribute("src");
+        var leadBtn = addThumb(leadThumb, leadIsVideo ? "Demo video" : (lead.alt || "Overview"), function () {
+          winMedia.textContent = "";
+          winMedia.classList.remove("is-shot");
+          winMedia.classList.toggle("is-video", leadIsVideo);
+          winMedia.appendChild(lead);
+          if (leadIsVideo && !reduce) { var p = lead.play(); if (p && p.catch) p.catch(function () {}); }
+        });
+        if (leadIsVideo) leadBtn.classList.add("win__shot--video");
+      }
+      $$("img", tpl.content).forEach(function (src) {
+        addThumb(src.getAttribute("data-thumb") || src.getAttribute("src"), src.alt, function () {
+          if (leadIsVideo) lead.pause();
+          winMedia.textContent = "";
+          winMedia.classList.remove("is-video");
+          winMedia.classList.add("is-shot");
+          var big = document.createElement("img");
+          big.src = src.getAttribute("src"); big.alt = src.alt; big.decoding = "async";
+          winMedia.appendChild(big);
+        });
+      });
+      buttons.forEach(function (x, i) { x.setAttribute("aria-pressed", i ? "false" : "true"); });
+      winShots.scrollLeft = 0;
+      winShots.hidden = buttons.length < 2;
+    };
 
     $$("[data-open]").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -216,6 +269,7 @@
 
         winTitle.textContent = title ? title.textContent.replace(/\s+/g, " ").trim() : "";
         winMedia.textContent = "";
+        winMedia.classList.remove("is-shot");
         winMedia.classList.toggle("is-paper", mediaEl.classList.contains("work__media--paper"));
         winMedia.classList.toggle("is-video", !!img && img.tagName === "VIDEO");
         if (img && !mediaEl.classList.contains("is-empty")) {
@@ -232,6 +286,7 @@
           }
           winMedia.appendChild(copy);
         } else showFallback();
+        fillShots(card);
 
         winAbout.textContent = ""; winTags.textContent = "";
         if (tpl) {

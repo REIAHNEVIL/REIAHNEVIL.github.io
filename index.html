@@ -341,7 +341,7 @@
         <article class="work">
           <figure class="work__media slot" data-slot>
             <span class="slot__fallback slot__fallback--stat" aria-hidden="true"><b>31</b></span>
-            <img src="assets/img/projects/core-to-core.jpg" width="1440" height="900" alt="Core-to-Core Biosymposium 2026 home page with the invitation headline, the October 12 to 13 date, the SAFAD Theatre venue and Register buttons." onerror="this.parentNode.classList.add('is-empty')">
+            <video src="assets/video/projects/core-to-core.mp4" poster="assets/img/projects/core-to-core-poster.jpg" width="1920" height="1080" muted loop playsinline preload="none" data-autoplay aria-label="Core-to-Core demo: a delegate registers and uploads an abstract, the committee accepts it, confirms the payment and exports the registrant list, the decision email arrives, and a pinned announcement appears on the public site. All delegate data shown is fictional." onerror="this.parentNode.classList.add('is-empty')"></video>
           </figure>
           <h3 class="work__title">Core-to-Core Biosymposium <span class="work__type">(Freelance Project)</span> – 2026</h3>
           <p class="work__line">The official site and admin console for an international conference.</p>
@@ -353,6 +353,30 @@
               <li>Automated confirmation and decision emails for registrations, payments and abstracts.</li>
             </ul>
             <ul class="win__tags"><li>React</li><li>Django</li><li>Django REST Framework</li></ul>
+          </template>
+          <!-- Screenshots for the details window. Personal data in the admin views is blurred. -->
+          <template class="work__shots">
+            <img src="assets/img/projects/core-to-core/1.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/1.jpg" alt="Home page with the invitation headline, the October 12 to 13 dates, the SAFAD Theatre venue and Register buttons.">
+            <img src="assets/img/projects/core-to-core/2.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/2.jpg" alt="Registration form with delegate details and dietary preferences.">
+            <img src="assets/img/projects/core-to-core/3.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/3.jpg" alt="Conference Details page introducing the keynote speakers.">
+            <img src="assets/img/projects/core-to-core/4.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/4.jpg" alt="Two-day conference schedule, opened on Day 1.">
+            <img src="assets/img/projects/core-to-core/5.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/5.jpg" alt="Parallel sessions A and B in the program.">
+            <img src="assets/img/projects/core-to-core/6.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/6.jpg" alt="Call for abstracts with the key dates and the oral and poster formats.">
+            <img src="assets/img/projects/core-to-core/7.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/7.jpg" alt="Symposium topics on the Abstract Submission page.">
+            <img src="assets/img/projects/core-to-core/8.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/8.jpg" alt="Committees page with the overall chair and committee members.">
+            <img src="assets/img/projects/core-to-core/9.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/9.jpg" alt="Sponsors page.">
+            <img src="assets/img/projects/core-to-core/10.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/10.jpg" alt="Useful Information page with the latest announcements from the committee.">
+            <img src="assets/img/projects/core-to-core/11.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/11.jpg" alt="Conference venue map announcement.">
+            <img src="assets/img/projects/core-to-core/12.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/12.jpg" alt="Travel and practical information for delegates.">
+            <img src="assets/img/projects/core-to-core/13.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/13.jpg" alt="Admin console sign-in, with the credentials blurred.">
+            <img src="assets/img/projects/core-to-core/14.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/14.jpg" alt="Admin dashboard with 31 registrations, 26 abstracts and delegates by country. Delegate names are blurred.">
+            <img src="assets/img/projects/core-to-core/15.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/15.jpg" alt="Registrations table with presentation and payment filters and CSV export. Personal details are blurred.">
+            <img src="assets/img/projects/core-to-core/16.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/16.jpg" alt="Abstract review table with accept and reject actions. Titles, authors and files are blurred.">
+            <img src="assets/img/projects/core-to-core/17.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/17.jpg" alt="Announcement composer with formatting tools, next to the published announcements.">
+            <img src="assets/img/projects/core-to-core/18.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/18.jpg" alt="Program editor for the two-day schedule.">
+            <img src="assets/img/projects/core-to-core/19.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/19.jpg" alt="Speakers editor with keynote and plenary speakers.">
+            <img src="assets/img/projects/core-to-core/20.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/20.jpg" alt="Committee editor with members grouped by committee.">
+            <img src="assets/img/projects/core-to-core/21.jpg" data-thumb="assets/img/projects/core-to-core/thumbs/21.jpg" alt="Sponsors editor with sponsor tiers.">
           </template>
         </article>
 
@@ -560,7 +584,10 @@
       <button class="win__close" type="button" data-close aria-label="Close"><svg aria-hidden="true"><use href="#close"/></svg></button>
     </div>
     <div class="win__body">
-      <div class="win__media" data-win-media></div>
+      <div class="win__left">
+        <div class="win__media" data-win-media></div>
+        <div class="win__shots" data-win-shots hidden></div>
+      </div>
       <div class="win__content">
         <h4>About the project</h4>
         <div data-win-about></div>
