@@ -485,6 +485,7 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 .carousel.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
 .carousel.is-dragging * { pointer-events: none; }
 .event { scroll-snap-align: start; display: grid; gap: 0.6rem; align-content: start; }
+.event:last-child { scroll-snap-align: end; } /* lets the last card snap fully into view */
 .event__photos {
   position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden; background: var(--surface-2);
   margin-bottom: 0.6rem; transition: transform var(--dur) var(--ease-out);

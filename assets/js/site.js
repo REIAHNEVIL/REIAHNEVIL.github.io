@@ -269,9 +269,11 @@
     };
     var go = function (delta) {
       var max = carousel.scrollWidth - carousel.clientWidth;
-      var target = carousel.scrollLeft + delta * stepSize();
-      if (target > max + 4) target = 0;
-      else if (target < -4) target = max;
+      var now = carousel.scrollLeft;
+      var target = now + delta * stepSize();
+      // Go all the way to the end (or start) first; wrap around only once already there.
+      if (target > max) target = now >= max - 4 ? 0 : max;
+      else if (target < 0) target = now <= 4 ? max : 0;
       carousel.scrollTo({ left: target, behavior: reduce ? "auto" : "smooth" });
     };
     var prev = $("[data-prev]"), next = $("[data-next]");
