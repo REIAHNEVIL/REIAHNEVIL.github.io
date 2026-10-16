@@ -522,10 +522,19 @@
     function show(i) {
       if (!shots.length) return;
       at = (i + shots.length) % shots.length;
-      shots.forEach(function (img, k) { img.classList.toggle("is-on", k === at); });
+      shots.forEach(function (el, k) {
+        el.classList.toggle("is-on", k === at);
+        // a video slide plays only while it is the one on screen
+        if (el.tagName === "VIDEO") {
+          if (k === at && !reduce) { var p = el.play(); if (p && p.catch) p.catch(function () {}); }
+          else el.pause();
+        }
+      });
       $$("span", pipsWrap).forEach(function (s, k) { s.classList.toggle("is-on", k === at); });
-      pCount.textContent = "Photo " + (at + 1) + " of " + shots.length;
+      pCount.textContent = (shots[at].tagName === "VIDEO" ? "Video " : "Photo ") + (at + 1) + " of " + shots.length;
     }
+
+    function addPip() { pipsWrap.appendChild(document.createElement("span")); }
 
     $$("[data-event]").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -546,25 +555,42 @@
         pCount.textContent = "Photos coming soon";
         openPopup(post, btn);
 
+        // An optional clip (data-video on the photo box) leads the gallery and shows straight away
+        var clip = box.getAttribute("data-video");
+        if (clip) {
+          stage.textContent = "";
+          var vid = document.createElement("video");
+          vid.src = clip;
+          vid.poster = box.getAttribute("data-poster") || "";
+          vid.muted = true; vid.loop = true; vid.playsInline = true;
+          vid.setAttribute("aria-label", box.getAttribute("data-video-label") || "Video");
+          if (reduce) vid.controls = true; // no autoplay with reduced motion, so offer controls instead
+          stage.appendChild(vid);
+          shots = [vid]; addPip();
+          show(0);
+        }
+
         findPhotos(box.getAttribute("data-photos")).then(function (srcs) {
           if (!srcs.length || !post.open) return;
-          stage.textContent = "";
+          if (!shots.length) stage.textContent = "";
           var alt = box.getAttribute("data-alt") || "";
-          shots = srcs.map(function (src, k) {
+          srcs.forEach(function (src, k) {
             var img = document.createElement("img");
             img.src = src; img.alt = alt + ", photo " + (k + 1) + " of " + srcs.length;
             stage.appendChild(img);
-            var pip = document.createElement("span");
-            pipsWrap.appendChild(pip);
-            return img;
+            addPip();
+            shots.push(img);
           });
           pPrev.hidden = pNext.hidden = shots.length < 2;
-          show(0);
+          show(at);
         });
       });
     });
     pPrev.addEventListener("click", function () { show(at - 1); });
     pNext.addEventListener("click", function () { show(at + 1); });
+    post.addEventListener("close", function () {
+      shots.forEach(function (el) { if (el.tagName === "VIDEO") el.pause(); });
+    });
     post.addEventListener("keydown", function (e) {
       if (e.key === "ArrowRight") { e.preventDefault(); show(at + 1); }
       if (e.key === "ArrowLeft") { e.preventDefault(); show(at - 1); }

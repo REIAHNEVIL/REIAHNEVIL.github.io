@@ -6,6 +6,10 @@
 # Design notes about the site, not part of it
 PRODUCT.md
 
+# Original camera footage: too large for GitHub; the site uses compressed copies
+*.MOV
+*.mov
+
 # Editor and assistant settings
 .claude/
 .vscode/

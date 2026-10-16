@@ -810,8 +810,8 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 .post__close:hover { background: var(--ink); color: var(--bg); }
 .post__media { position: relative; background: #000; overflow: hidden; }
 .post__stage { position: absolute; inset: 0; }
-.post__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 350ms var(--ease-out); }
-.post__stage img.is-on { opacity: 1; }
+.post__stage img, .post__stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 350ms var(--ease-out); }
+.post__stage img.is-on, .post__stage video.is-on { opacity: 1; }
 .post__stage .event__fallback { background: var(--surface-2); }
 .post__nav {
   position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
