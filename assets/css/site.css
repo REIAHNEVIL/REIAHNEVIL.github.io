@@ -819,8 +819,8 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 .stack { padding-block: calc(var(--section) * 0.5); display: grid; gap: 0.25rem; }
 .stack .title { font-size: clamp(2.25rem, 1.5rem + 2.4vw, 3.75rem); margin-bottom: 1.25rem; }
 .stack__group {
-  display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 1rem; align-items: start;
-  width: min(100%, 64rem); margin-inline: auto; padding-block: 0.9rem; border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 1rem; align-items: start;
+  width: min(100%, 72rem); margin-inline: auto; padding-block: 0.9rem; border-top: 1px solid var(--line);
 }
 .stack__label { font-family: var(--pixel); font-weight: 400; font-size: 0.8rem; text-transform: uppercase; color: var(--accent-text); padding-top: 0.7rem; }
 .stack__tools { display: flex; flex-wrap: wrap; gap: 0.45rem; }
