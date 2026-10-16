@@ -205,57 +205,134 @@
     var winTags = $("[data-win-tags]", win);
     var winShots = $("[data-win-shots]", win);
 
-    // Screenshot strip under the media: the card's own media first, then each <img> in template.work__shots.
+    // Gallery in the window: the card's own media first, then each <img> in template.work__shots.
+    // Arrow buttons, the thumbnail strip, ← → (or < >) and swipes all browse it; the corner button goes full screen.
+    var ctl = function (cls, label, icon) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "win__ctl " + cls; b.setAttribute("aria-label", label);
+      b.innerHTML = icon;
+      return b;
+    };
+    var gPrev = ctl("win__ctl--prev", "Previous image", '<svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#chev"/></svg>');
+    var gNext = ctl("win__ctl--next", "Next image", '<svg aria-hidden="true"><use href="#chev"/></svg>');
+    var ICON_FULL = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+    var ICON_EXIT = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+    var gFull = ctl("win__ctl--full", "View full screen", ICON_FULL);
+    var gCount = document.createElement("p");
+    gCount.className = "win__count";
+    gCount.setAttribute("aria-live", "polite");
+    var gItems = [], gThumbs = [], gAt = 0, gNode = null;
+    var canFull = !!(winMedia.requestFullscreen || winMedia.webkitRequestFullscreen);
+    var fullEl = function () { return document.fullscreenElement || document.webkitFullscreenElement; };
+
+    var showItem = function (i) {
+      if (gItems.length < 2) return;
+      gAt = (i + gItems.length) % gItems.length;
+      var item = gItems[gAt];
+      var node = item.node();
+      if (gNode && gNode !== node) {
+        if (gNode.tagName === "VIDEO") gNode.pause();
+        gNode.remove();
+      }
+      winMedia.insertBefore(node, winMedia.firstChild);
+      gNode = node;
+      winMedia.classList.toggle("is-video", node.tagName === "VIDEO");
+      winMedia.classList.toggle("is-shot", !!item.shot);
+      if (node.tagName === "VIDEO" && !reduce) { var p = node.play(); if (p && p.catch) p.catch(function () {}); }
+      gCount.textContent = (gAt + 1) + " / " + gItems.length;
+      gThumbs.forEach(function (t, k) { t.setAttribute("aria-pressed", k === gAt ? "true" : "false"); });
+      // keep the current thumbnail in view without scrolling the window itself
+      var t = gThumbs[gAt];
+      if (t) {
+        var left = winShots.scrollLeft, right = left + winShots.clientWidth;
+        var to = t.offsetLeft < left ? t.offsetLeft : (t.offsetLeft + t.offsetWidth > right ? t.offsetLeft + t.offsetWidth - winShots.clientWidth : left);
+        if (to !== left) winShots.scrollTo({ left: to, behavior: reduce ? "auto" : "smooth" });
+      }
+    };
+
     var fillShots = function (card) {
       winShots.textContent = "";
-      winShots.hidden = true;
-      var tpl = $("template.work__shots", card);
-      if (!tpl) return;
-      var lead = winMedia.firstElementChild;
-      var leadIsVideo = !!lead && lead.tagName === "VIDEO";
-      var buttons = [];
-      var addThumb = function (thumb, label, show) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.className = "win__shot";
-        b.setAttribute("aria-label", label);
-        var t = document.createElement("img");
-        t.src = thumb; t.alt = ""; t.loading = "lazy"; t.decoding = "async";
-        b.appendChild(t);
-        b.addEventListener("click", function () {
-          buttons.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-          show();
-        });
-        winShots.appendChild(b);
-        buttons.push(b);
-        return b;
-      };
+      gItems = []; gThumbs = []; gAt = 0;
+      gNode = winMedia.firstElementChild;
+      var lead = gNode;
       if (lead && !lead.classList.contains("slot__fallback")) {
-        var leadThumb = leadIsVideo ? lead.getAttribute("poster") : lead.getAttribute("src");
-        var leadBtn = addThumb(leadThumb, leadIsVideo ? "Demo video" : (lead.alt || "Overview"), function () {
-          winMedia.textContent = "";
-          winMedia.classList.remove("is-shot");
-          winMedia.classList.toggle("is-video", leadIsVideo);
-          winMedia.appendChild(lead);
-          if (leadIsVideo && !reduce) { var p = lead.play(); if (p && p.catch) p.catch(function () {}); }
+        var isVideo = lead.tagName === "VIDEO";
+        gItems.push({
+          thumb: isVideo ? lead.getAttribute("poster") : lead.getAttribute("src"),
+          label: isVideo ? "Demo video" : (lead.alt || "Overview"),
+          video: isVideo,
+          node: function () { return lead; }
         });
-        if (leadIsVideo) leadBtn.classList.add("win__shot--video");
       }
-      $$("img", tpl.content).forEach(function (src) {
-        addThumb(src.getAttribute("data-thumb") || src.getAttribute("src"), src.alt, function () {
-          if (leadIsVideo) lead.pause();
-          winMedia.textContent = "";
-          winMedia.classList.remove("is-video");
-          winMedia.classList.add("is-shot");
-          var big = document.createElement("img");
-          big.src = src.getAttribute("src"); big.alt = src.alt; big.decoding = "async";
-          winMedia.appendChild(big);
+      var tpl = $("template.work__shots", card);
+      if (tpl) $$("img", tpl.content).forEach(function (src) {
+        var big = null;
+        gItems.push({
+          thumb: src.getAttribute("data-thumb") || src.getAttribute("src"),
+          label: src.alt,
+          shot: true,
+          node: function () {
+            if (!big) { big = document.createElement("img"); big.src = src.getAttribute("src"); big.alt = src.alt; big.decoding = "async"; }
+            return big;
+          }
         });
       });
-      buttons.forEach(function (x, i) { x.setAttribute("aria-pressed", i ? "false" : "true"); });
+      var many = gItems.length > 1;
+      if (many) gItems.forEach(function (item, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "win__shot" + (item.video ? " win__shot--video" : "");
+        b.setAttribute("aria-label", item.label);
+        b.setAttribute("aria-pressed", i ? "false" : "true");
+        var t = document.createElement("img");
+        t.src = item.thumb; t.alt = ""; t.loading = "lazy"; t.decoding = "async";
+        b.appendChild(t);
+        b.addEventListener("click", function () { showItem(i); });
+        winShots.appendChild(b);
+        gThumbs.push(b);
+      });
       winShots.scrollLeft = 0;
-      winShots.hidden = buttons.length < 2;
+      winShots.hidden = !many;
+      gPrev.hidden = gNext.hidden = gCount.hidden = !many;
+      gFull.hidden = !canFull || !lead || lead.classList.contains("slot__fallback");
+      gCount.textContent = many ? "1 / " + gItems.length : "";
+      winMedia.append(gPrev, gNext, gFull, gCount);
     };
+
+    gPrev.addEventListener("click", function () { showItem(gAt - 1); });
+    gNext.addEventListener("click", function () { showItem(gAt + 1); });
+    gFull.addEventListener("click", function () {
+      if (fullEl()) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+      var req = winMedia.requestFullscreen || winMedia.webkitRequestFullscreen;
+      var p = req.call(winMedia);
+      if (p && p.catch) p.catch(function () {});
+    });
+    ["fullscreenchange", "webkitfullscreenchange"].forEach(function (ev) {
+      document.addEventListener(ev, function () {
+        var on = fullEl() === winMedia;
+        winMedia.classList.toggle("is-full", on);
+        gFull.setAttribute("aria-label", on ? "Exit full screen" : "View full screen");
+        gFull.innerHTML = on ? ICON_EXIT : ICON_FULL;
+      });
+    });
+    // Keys work anywhere while the window is open, including in full screen.
+    document.addEventListener("keydown", function (e) {
+      if (!win.open || gItems.length < 2 || e.altKey || e.ctrlKey || e.metaKey) return;
+      var back = e.key === "ArrowLeft" || e.key === "<" || e.key === ",";
+      var fwd = e.key === "ArrowRight" || e.key === ">" || e.key === ".";
+      if (!back && !fwd) return;
+      e.preventDefault();
+      showItem(gAt + (fwd ? 1 : -1));
+    });
+    // Swipe on touch screens
+    var gx = null;
+    winMedia.addEventListener("touchstart", function (e) { gx = e.touches[0].clientX; }, { passive: true });
+    winMedia.addEventListener("touchend", function (e) {
+      if (gx === null) return;
+      var dx = e.changedTouches[0].clientX - gx;
+      gx = null;
+      if (Math.abs(dx) > 40) showItem(gAt + (dx < 0 ? 1 : -1));
+    });
 
     $$("[data-open]").forEach(function (btn) {
       btn.addEventListener("click", function () {

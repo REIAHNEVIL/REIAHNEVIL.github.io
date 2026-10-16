@@ -320,7 +320,32 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 .win__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .win__media.is-shot { aspect-ratio: 16 / 9; background: #0a0a0a; }
 .win__media.is-shot img { object-fit: contain; object-position: 50% 50%; }
-.win__shots { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.35rem; scroll-snap-type: x proximity; scrollbar-width: thin; }
+.win__ctl {
+  position: absolute; z-index: 2;
+  display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border: 0; border-radius: 50%;
+  background: rgb(255 255 255 / 0.9); color: #0a0a0a; cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
+}
+.win__ctl svg { width: 1.1rem; height: 1.1rem; }
+.win__ctl[hidden] { display: none; }
+.win__ctl--prev, .win__ctl--next { top: 50%; transform: translateY(-50%); }
+.win__ctl--prev:hover, .win__ctl--next:hover { transform: translateY(-50%) scale(1.08); }
+.win__ctl--prev { left: 0.75rem; }
+.win__ctl--next { right: 0.75rem; }
+.win__ctl--full { top: 0.75rem; right: 0.75rem; width: 2.25rem; height: 2.25rem; }
+.win__ctl--full:hover { transform: scale(1.08); }
+.win__count { position: absolute; left: 0.75rem; bottom: 0.75rem; z-index: 2; padding: 0.15rem 0.5rem; border-radius: 4px; background: rgb(10 10 10 / 0.75); color: #f1f0ed; font-family: var(--pixel); font-size: 0.7rem; line-height: 1.5; }
+.win__count[hidden] { display: none; }
+.win__media.is-video .win__count { top: 0.75rem; bottom: auto; } /* clear of the video's control bar */
+.win__media.is-full { aspect-ratio: auto; border-radius: 0; background: #0a0a0a; }
+.win__media.is-full img { object-fit: contain; object-position: 50% 50%; }
+.win__media.is-full .win__ctl { width: 3rem; height: 3rem; }
+.win__media.is-full .win__ctl--prev { left: 1.5rem; }
+.win__media.is-full .win__ctl--next { right: 1.5rem; }
+.win__media.is-full .win__ctl--full { top: 1.5rem; right: 1.5rem; }
+.win__media.is-full .win__count { left: 1.5rem; bottom: 1.5rem; font-size: 0.85rem; }
+.win__media.is-full.is-video .win__count { top: 1.5rem; bottom: auto; }
+.win__shots { position: relative; display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.35rem; scroll-snap-type: x proximity; scrollbar-width: thin; }
 .win__shots[hidden] { display: none; }
 .win__shot { position: relative; flex: none; width: 6.5rem; aspect-ratio: 16 / 9; padding: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--surface-2); cursor: pointer; opacity: 0.55; scroll-snap-align: start; transition: opacity 200ms var(--ease-out), border-color 200ms var(--ease-out); }
 .win__shot img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; display: block; }
