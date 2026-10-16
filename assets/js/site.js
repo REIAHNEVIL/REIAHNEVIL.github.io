@@ -181,6 +181,7 @@
   function closePopup(dialog) {
     if (!dialog.open || dialog.classList.contains("is-closing")) return;
     var finish = function () {
+      $$("video", dialog).forEach(function (v) { v.pause(); });
       dialog.classList.remove("is-closing");
       dialog.close();
       if (dialog._opener) dialog._opener.focus({ preventScroll: true });
@@ -209,17 +210,26 @@
         var tpl = $("template.work__detail", card);
         var title = $(".work__title", card);
         var mediaEl = $(".work__media", card);
-        var img = $("img", mediaEl);
+        var img = $("img, video", mediaEl);
         var fb = $(".slot__fallback", mediaEl);
         var showFallback = function () { winMedia.textContent = ""; if (fb) winMedia.appendChild(fb.cloneNode(true)); };
 
         winTitle.textContent = title ? title.textContent.replace(/\s+/g, " ").trim() : "";
         winMedia.textContent = "";
         winMedia.classList.toggle("is-paper", mediaEl.classList.contains("work__media--paper"));
+        winMedia.classList.toggle("is-video", !!img && img.tagName === "VIDEO");
         if (img && !mediaEl.classList.contains("is-empty")) {
           var copy = img.cloneNode();
           copy.removeAttribute("onerror");
           copy.onerror = showFallback;
+          if (copy.tagName === "VIDEO") {
+            // full player in the window: controls on, so visitors can unmute or scrub
+            copy.removeAttribute("data-autoplay");
+            copy.muted = true;
+            copy.controls = true;
+            copy.preload = "metadata";
+            if (!reduce) copy.autoplay = true;
+          }
           winMedia.appendChild(copy);
         } else showFallback();
 
@@ -233,6 +243,20 @@
         openPopup(win, btn);
       });
     });
+  }
+
+  // ---------- Project card videos: play muted only while on screen ----------
+  var cardVideos = $$("video[data-autoplay]");
+  cardVideos.forEach(function (v) { v.muted = true; });
+  if (!reduce && hasIO && cardVideos.length) {
+    var videoIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var v = entry.target;
+        if (entry.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.35 });
+    cardVideos.forEach(function (v) { videoIO.observe(v); });
   }
 
   // ---------- Event photos: assets/img/events/<event>/1.jpg, 2.jpg, ... found automatically ----------
