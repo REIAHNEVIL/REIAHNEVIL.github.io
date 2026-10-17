@@ -432,19 +432,20 @@
         <article class="work" data-extra>
           <figure class="work__media slot" data-slot>
             <span class="slot__fallback slot__fallback--stat" aria-hidden="true"><b>85.8%</b></span>
-            <img loading="lazy" decoding="async" src="assets/img/projects/salitayo.webp" width="1440" height="900" alt="SALITAyo writing assistant" onerror="this.parentNode.classList.add('is-empty')">
+            <video src="assets/video/projects/salitayo.mp4" poster="assets/img/projects/salitayo-poster.webp" width="1920" height="1080" muted controls playsinline preload="none" aria-label="SALITAyo launch video, recorded in the real app with sample input: a learner types 'I recieved the leter and it was the begining of thhe story.', the Writing Assistant underlines four errors and names each type with a reason, the learner picks 'letter' over the suggested 'later' and applies it; then a Filipino sentence, a context check against a reference passage, the five-step pipeline, an example Reading Restructurer output, and a Word Proficiency speaking session. Team project." onerror="this.parentNode.classList.add('is-empty')"></video>
           </figure>
           <h3 class="work__title">SALITAyo <span class="work__type">(NLP Project)</span> – 2026</h3>
           <p class="work__line">A bilingual reading and writing assistant for dyslexic learners.</p>
+          <p class="work__line">Team project — I built the Writing Assistant (spell-error detection, error-type classification and context alignment).</p>
           <div class="work__actions"><button class="btn btn--sm" type="button" data-open>View details <svg aria-hidden="true"><use href="#arrow"/></svg></button></div>
           <template class="work__detail">
-            <p>A bilingual English and Filipino reading and writing assistant for dyslexic learners, built in a team of three. I led the Writing Assistant component.</p>
+            <p>A dyslexia-aware learning platform for Filipino learners in English, Filipino and Taglish. A team project of three: I built the Writing Assistant, Jean Kathleen Villegas built the Reading Restructurer and Maria Katrina Esclamado built Word Proficiency.</p>
             <ul class="win__points">
-              <li>Fine-tuned a T5-small model on 22,000+ misspellings to rank spelling corrections: 85.8% top-1 accuracy.</li>
-              <li>Trained a RandomForest classifier that sorts errors into five dyslexia-related types: 0.98 weighted F1.</li>
-              <li>Built the writing pipeline in Django REST Framework and React, combining SymSpell candidates, DeBERTa-v2 checks against reference passages, and LLaMA 3.3 via Groq for Filipino and Taglish text.</li>
+              <li>Fine-tuned a T5-small model on 22,000+ misspellings to rank spelling corrections: 85.77% top-1 accuracy.</li>
+              <li>Trained a RandomForest classifier that sorts errors into five dyslexia-related types: 0.981 weighted F1.</li>
+              <li>Built the writing pipeline in Django REST Framework and React, combining SymSpell candidates, MiniLM retrieval with DeBERTa-v2 checks against reference passages, and a Groq-hosted LLM (gpt-oss-120b) for Filipino and Taglish text.</li>
             </ul>
-            <ul class="win__tags"><li>Python</li><li>T5-small</li><li>RandomForest</li><li>DeBERTa-v2</li><li>LLaMA 3.3</li><li>Django REST Framework</li><li>React</li></ul>
+            <ul class="win__tags"><li>Python</li><li>T5-small</li><li>RandomForest</li><li>DeBERTa-v2</li><li>MiniLM</li><li>Groq</li><li>Django REST Framework</li><li>React</li></ul>
           </template>
           <!-- Screenshots for the details window -->
           <template class="work__shots">
