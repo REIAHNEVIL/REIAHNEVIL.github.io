@@ -40,16 +40,16 @@ Drop JPGs into these folders and they appear automatically. Until then each spot
 | `assets/img/events/lead2lead/` | EO Lead 2 Lead Congress |
 | `assets/img/events/topcit/` | TOPCIT certificate |
 
-Name them `1.jpg`, `2.jpg`, `3.jpg`… Portrait-ish (4:5) photos fit the cards best. Several photos in one folder become a slideshow on that event's card, and clicking the card opens them one at a time in the event popup.
+Name them `1.webp`, `2.webp`, `3.webp`… and set that event's `data-count` in `index.html` to the number of photos. Portrait-ish (4:5) photos fit the cards best. Several photos in one folder become a slideshow on that event's card, and clicking the card opens them one at a time in the event popup.
 
 **Single photos:**
 
 | File | Where it shows |
 | --- | --- |
-| `assets/img/portrait.jpg` (about 9:11) | Intro photo card and the event popup avatar |
-| `assets/img/projects/lab-booking.jpg` | Lab Booking System |
-| `assets/img/projects/salitayo.jpg` | SALITAyo |
-| `assets/img/projects/aaims.jpg` | AAIMS |
-| `assets/img/projects/josenicare.jpg` | JoseniCare |
+| `assets/img/portrait.webp` (about 9:11) | Intro photo card and the event popup avatar (keep `portrait.jpg` too: it's the link-preview image) |
+| `assets/img/projects/lab-booking.webp` | Lab Booking System |
+| `assets/img/projects/salitayo.webp` | SALITAyo |
+| `assets/img/projects/aaims.webp` | AAIMS |
+| `assets/img/projects/josenicare.webp` | JoseniCare |
 
-Project screenshots work best at 16:10, for example 1440×900. Keep each photo under about 400 KB (resize to roughly 1600px on the long side) so the site stays fast.
+Project screenshots work best at 16:10, for example 1440×900. Keep each photo under about 400 KB (resize to roughly 1600px on the long side) so the site stays fast. Save photos as WebP (quality about 80), e.g. with [Squoosh](https://squoosh.app), and keep videos at 720p with no audio track.

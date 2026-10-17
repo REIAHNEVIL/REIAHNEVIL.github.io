@@ -388,10 +388,18 @@
     cardVideos.forEach(function (v) { videoIO.observe(v); });
   }
 
-  // ---------- Event photos: assets/img/events/<event>/1.jpg, 2.jpg, ... found automatically ----------
+  // ---------- Event photos: assets/img/events/<event>/1.webp ... <data-count>.webp ----------
+  // With data-count the list is built directly (no requests, no 404s); without it, probe until one is missing.
   var photoCache = {};
-  function findPhotos(dir) {
+  function findPhotos(box) {
+    var dir = box.getAttribute("data-photos");
     if (photoCache[dir]) return photoCache[dir];
+    var count = parseInt(box.getAttribute("data-count"), 10);
+    if (count >= 0) {
+      var list = [];
+      for (var i = 1; i <= count; i++) list.push(dir + "/" + i + ".webp");
+      return (photoCache[dir] = Promise.resolve(list));
+    }
     photoCache[dir] = new Promise(function (resolve) {
       var found = [];
       (function tryNext(n) {
@@ -399,7 +407,7 @@
         var img = new Image();
         img.onload = function () { found.push(img.src); tryNext(n + 1); };
         img.onerror = function () { resolve(found); };
-        img.src = dir + "/" + n + ".jpg";
+        img.src = dir + "/" + n + ".webp";
       })(1);
     });
     return photoCache[dir];
@@ -462,7 +470,7 @@
     function fillCard(box) {
       if (box.dataset.loaded) return;
       box.dataset.loaded = "1";
-      findPhotos(box.getAttribute("data-photos")).then(function (srcs) {
+      findPhotos(box).then(function (srcs) {
         if (!srcs.length) return;
         var alt = box.getAttribute("data-alt") || "";
         box._imgs = srcs.map(function (src, i) {
@@ -567,7 +575,7 @@
           show(0);
         }
 
-        findPhotos(box.getAttribute("data-photos")).then(function (srcs) {
+        findPhotos(box).then(function (srcs) {
           if (!srcs.length || !post.open) return;
           if (!shots.length) stage.textContent = "";
           var alt = box.getAttribute("data-alt") || "";
