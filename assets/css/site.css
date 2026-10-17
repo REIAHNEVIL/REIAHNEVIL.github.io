@@ -383,6 +383,7 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 .win__shot--video::after { content: "Demo"; position: absolute; left: 0.3rem; bottom: 0.25rem; padding: 0.05rem 0.3rem; border-radius: 3px; background: rgb(10 10 10 / 0.8); color: #f1f0ed; font-family: var(--pixel); font-size: 0.6rem; text-transform: uppercase; }
 .win__content { display: grid; gap: 0.85rem; align-content: start; }
 .win__content h4 { font-family: var(--pixel); font-weight: 700; font-size: var(--step-small); text-transform: uppercase; color: var(--accent-text); margin-top: 0.4rem; }
+[data-win-about] { display: grid; gap: 0.85rem; }
 .win__points { display: grid; gap: 0.45rem; }
 .win__points li { position: relative; padding-left: 1.1rem; }
 .win__points li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 0.4rem; height: 0.4rem; background: var(--accent); }
