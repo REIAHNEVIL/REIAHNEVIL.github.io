@@ -97,6 +97,20 @@
     if (lists.length === 2) lists[1].innerHTML = lists[0].innerHTML;
   });
 
+  // ---------- About dropdowns: opening one closes the open one above it, which would pull the page
+  // up under the reader. Keep the clicked header where it was until the close animation ends. ----------
+  $$(".drop > summary").forEach(function (sum) {
+    sum.addEventListener("click", function () {
+      var top = sum.getBoundingClientRect().top;
+      var until = performance.now() + 900;
+      (function hold() {
+        var shift = sum.getBoundingClientRect().top - top;
+        if (Math.abs(shift) > 0.5) window.scrollBy({ top: shift, behavior: "instant" });
+        if (performance.now() < until) requestAnimationFrame(hold);
+      })();
+    });
+  });
+
   // ---------- Skills: tap toggles a card on touch screens ----------
   $$("[data-skill]").forEach(function (card) {
     card.addEventListener("click", function () {

@@ -19,7 +19,7 @@ Then open http://localhost:8000.
 
 ## Where things are
 
-- `index.html` – all content (taken from `cv/BATOHANON_CV.pdf`)
+- `index.html` – all content (taken from `resume/BATOHANON_Resume.pdf`)
 - `assets/css/tokens.css` – colours (dark and light), type sizes, spacing
 - `assets/css/site.css` – layout, sections, motion
 - `assets/js/site.js` – theme, menu, about dropdowns, skill cards, experience timeline, project details window, events carousel and photo popup
@@ -33,6 +33,7 @@ Drop JPGs into these folders and they appear automatically. Until then each spot
 
 | Folder | Event |
 | --- | --- |
+| `assets/img/events/ph-startup-challenge/` | Philippine Startup Challenge XI |
 | `assets/img/events/ipbl/` | iPBL 2026 |
 | `assets/img/events/psite/` | PSITE Innovation Challenge |
 | `assets/img/events/skydeck/` | Bangkok University × Berkeley SkyDeck Hackathon |

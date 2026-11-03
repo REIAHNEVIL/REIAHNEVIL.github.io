@@ -561,8 +561,9 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 .event__photos img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   opacity: 0; transform: scale(1.06); transition: opacity 900ms var(--ease-out), transform 4s linear;
+  pointer-events: none; /* hidden photos are stacked on top; only the one showing takes right-clicks */
 }
-.event__photos img.is-on { opacity: 1; transform: scale(1); }
+.event__photos img.is-on { opacity: 1; transform: scale(1); pointer-events: auto; }
 .event__fallback {
   position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 0.35rem; text-align: center; padding: 1rem;
   color: var(--muted); font-size: var(--step-small);
@@ -726,6 +727,7 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 }
 .about__list { display: grid; gap: 0.75rem; }
 
+.about__list { overflow-anchor: none; } /* site.js holds the clicked header in place instead */
 .drop { border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); overflow: hidden; transition: border-color var(--dur-fast) var(--ease-out); }
 .drop[open] { border-color: var(--accent); }
 .drop summary {
@@ -840,8 +842,8 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
 .post__close:hover { background: var(--ink); color: var(--bg); }
 .post__media { position: relative; background: #000; overflow: hidden; }
 .post__stage { position: absolute; inset: 0; }
-.post__stage img, .post__stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 350ms var(--ease-out); }
-.post__stage img.is-on, .post__stage video.is-on { opacity: 1; }
+.post__stage img, .post__stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; pointer-events: none; transition: opacity 350ms var(--ease-out); }
+.post__stage img.is-on, .post__stage video.is-on { opacity: 1; pointer-events: auto; }
 .post__stage .event__fallback { background: var(--surface-2); }
 .post__nav {
   position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
