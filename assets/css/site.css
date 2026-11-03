@@ -524,6 +524,12 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
   transition-delay: calc((3 - var(--n) * var(--n) / 3) * 40ms);
 }
 .fan__card > img { object-position: 0 0; }
+/* each card a different colour from the sunset, peach stays in the middle */
+.fan__card:nth-child(1) { --card: var(--ember); }
+.fan__card:nth-child(2) { --card: var(--sun); }
+.fan__card:nth-child(4) { --card: var(--dusk); }
+.fan__card:nth-child(5) { --card: var(--ink); --card-ink: var(--bg); }
+.fan__card .slot__fallback--word { background: var(--card, var(--accent)); color: var(--card-ink, var(--on-accent)); }
 .fan.is-open .fan__card { transform: translateX(-50%) rotate(calc(var(--n) * 13deg)); }
 .fan.is-open .fan__card:hover { transform: translateX(-50%) rotate(calc(var(--n) * 13deg)) translateY(-14px); }
 

@@ -46,6 +46,7 @@
   Night with a sunset.
   --accent   sunset peach: pills, highlights (always with --on-accent text)
   --sun      sunset yellow: dots, small marks
+  --ember / --dusk  deeper orange and pink from the same sunset: project fan card colours
   --dim      the resting colour of inactive display words
 */
 :root {
@@ -60,6 +61,8 @@
   --accent-text: #ffbf9e;
   --on-accent: #0a0a0a;
   --sun: #ffcf5a;
+  --ember: #ff9466;
+  --dusk: #f5a8b8;
   color-scheme: dark;
 
   --pixel: "Silkscreen", ui-monospace, monospace;
@@ -97,6 +100,8 @@
   --accent-text: #9c4317;
   --on-accent: #0a0a0a;
   --sun: #f2a900;
+  --ember: #f2804f;
+  --dusk: #f0a0b2;
   color-scheme: light;
 }
 
@@ -113,6 +118,8 @@
   --accent-text: #9c4317;
     --on-accent: #0a0a0a;
     --sun: #f2a900;
+    --ember: #f2804f;
+    --dusk: #f0a0b2;
     color-scheme: light;
   }
 }
