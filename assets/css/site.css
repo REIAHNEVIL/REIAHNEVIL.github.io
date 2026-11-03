@@ -545,9 +545,16 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
    ========================================================= */
 .events { padding-block: var(--section); }
 .events__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
-.events__nav { display: flex; gap: 0.6rem; }
+/* arrows sit on the left and right edges, centred on the photos (photo height = column width × 5/4) */
+.carousel-wrap { --col: clamp(16rem, 12rem + 14vw, 25rem); position: relative; }
+.carousel__arrow {
+  position: absolute; z-index: 2; top: calc(var(--col) * 0.625); translate: 0 -50%;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.25);
+}
+.carousel__arrow--prev { left: 0; margin-left: calc(-1 * min(1.75rem, var(--margin) - 0.25rem)); }
+.carousel__arrow--next { right: 0; margin-right: calc(-1 * min(1.75rem, var(--margin) - 0.25rem)); }
 .carousel {
-  display: grid; grid-auto-flow: column; grid-auto-columns: clamp(16rem, 12rem + 14vw, 25rem); gap: var(--gap);
+  display: grid; grid-auto-flow: column; grid-auto-columns: var(--col); gap: var(--gap);
   overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-behavior: smooth;
   scrollbar-width: none; padding-bottom: 0.5rem; cursor: grab;
   margin-inline: calc(max(var(--margin), (100vw - var(--max)) / 2) * -1);
@@ -702,7 +709,10 @@ main > section, .footer { padding-inline: max(var(--margin), (100vw - var(--max)
   .words__list { gap: 0.6rem; }
   .word__btn { font-size: 7.6vw; }
   .word__chip { display: none; }
-  .carousel { grid-auto-columns: 78vw; }
+  .carousel-wrap { --col: 78vw; }
+  .carousel__arrow { width: 2.75rem; height: 2.75rem; }
+  .carousel__arrow--prev { margin-left: 0.5rem; }
+  .carousel__arrow--next { margin-right: 0.5rem; }
   .events__head { align-items: flex-start; flex-direction: column; }
   
   .fan { height: 9.5rem; }

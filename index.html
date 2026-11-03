@@ -332,7 +332,7 @@
         <article class="work">
           <figure class="work__media slot" data-slot>
             <span class="slot__fallback slot__fallback--stat" aria-hidden="true"><b>RL</b></span>
-            <video src="assets/video/projects/mavia.mp4" poster="assets/img/projects/mavia-poster.webp" width="1920" height="1080" muted loop playsinline preload="none" data-autoplay aria-label="MAVIA demo: a lesson PDF becomes concepts, versions, questions and a learning path; the teacher approves and publishes it; a learner answers on the braille keypad, misses, hears a simpler explanation, and answers correctly. Every spoken line is captioned on screen." onerror="this.parentNode.classList.add('is-empty')"></video>
+            <video src="assets/video/projects/mavia.mp4" poster="assets/img/projects/mavia-poster.webp" width="1920" height="1080" muted loop playsinline preload="none" data-autoplay aria-label="MAVIA demo: a lesson PDF becomes concepts, versions, questions and a learning path. In the real teacher web app, the lesson is uploaded, reviewed and published as narrated audio. In the real learner phone app, a learner answers on the braille keypad, misses, hears a simpler explanation, and answers correctly. It ends with the goal: a full science learning path that adapts lesson by lesson. Every spoken line is captioned on screen." onerror="this.parentNode.classList.add('is-empty')"></video>
           </figure>
           <h3 class="work__title">MAVIA <span class="work__type">(Thesis, in progress)</span> – 2027</h3>
           <p class="work__line">Audio-tactile adaptive learning for blind and visually impaired (BVI) learners.</p>
@@ -495,12 +495,11 @@
     <section class="events" id="events" aria-labelledby="events-title">
       <div class="events__head">
         <h2 id="events-title" class="title" data-rise>EVENTS &amp;<br>AWARDS</h2>
-        <div class="events__nav">
-          <button class="round" type="button" data-prev aria-label="Previous event"><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#chev"/></svg></button>
-          <button class="round" type="button" data-next aria-label="Next event"><svg aria-hidden="true"><use href="#chev"/></svg></button>
-        </div>
       </div>
 
+      <div class="carousel-wrap">
+      <button class="round carousel__arrow carousel__arrow--prev" type="button" data-prev aria-label="Previous event"><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#chev"/></svg></button>
+      <button class="round carousel__arrow carousel__arrow--next" type="button" data-next aria-label="Next event"><svg aria-hidden="true"><use href="#chev"/></svg></button>
       <ul class="carousel" data-carousel aria-label="Events and awards">
         <li class="event">
           <button class="event__open" type="button" data-event aria-label="Open Philippine Startup Challenge XI photos and details">
@@ -590,6 +589,7 @@
           </template>
         </li>
       </ul>
+      </div>
       <div class="carousel__dots" data-dots aria-hidden="true"></div>
     </section>
 
